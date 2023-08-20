@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+import SignInSide from './components/SignInSide';
+import Navbar from './components/Navbar'
+import AdminLogin from './components/AdminLogin';
+//import Box from '@mui/material/Box'; 
 
 function App() {
+  const [userName, setUserName] = useState('');
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+
+        <Navbar/>
+        <Routes>
+          <Route path="/signin" element={<SignInSide setUserName={setUserName}/>} />
+          <Route path="/admin" element={<AdminLogin />} />
+        </Routes>
+
     </div>
   );
 }
